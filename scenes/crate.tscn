@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://u45yxfcdhqef"]
+
+[ext_resource type="Texture2D" uid="uid://d4g0mksnqawhm" path="res://assets/objects/objects.png" id="1_b66cd"]
+[ext_resource type="Script" uid="uid://bh0a3hkerogcs" path="res://scripts/crate.gd" id="1_dwt0d"]
+[ext_resource type="PackedScene" uid="uid://d4gdtyuembdmc" path="res://scenes/hurtbox.tscn" id="3_kn6iu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwt0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74u5o"]
+size = Vector2(14, 13)
+
+[node name="Crate" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_dwt0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b66cd")
+hframes = 16
+vframes = 13
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dwt0d")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_kn6iu")]
+collision_mask = 32
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_74u5o")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]
