@@ -13,7 +13,7 @@ config_version=5
 config/name="gmtk25"
 run/main_scene="uid://k0oj378ejinx"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cun5ki126fvde"
 
 [file_customization]
 
