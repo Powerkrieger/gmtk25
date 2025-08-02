@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://bd7s1mrn3rxai"]
+[gd_scene load_steps=35 format=3 uid="uid://bd7s1mrn3rxai"]
 
 [ext_resource type="Script" uid="uid://doc44pfdwesyh" path="res://scripts/player-jazz.gd" id="1_6ocmt"]
 [ext_resource type="Texture2D" uid="uid://cawxbdgqckngh" path="res://assets/characters/Yazar-Player.png" id="2_6ocmt"]
 [ext_resource type="PackedScene" uid="uid://dwah8aoy0puwv" path="res://scenes/hitbox.tscn" id="3_oyl5s"]
+[ext_resource type="PackedScene" uid="uid://c7c8w77i53dg7" path="res://scenes/sword.tscn" id="4_2y6s8"]
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -372,7 +373,7 @@ advance_mode = 2
 states/MoveState/node = SubResource("AnimationNodeStateMachine_f1ej7")
 states/MoveState/position = Vector2(401, 100)
 transitions = ["Start", "MoveState", SubResource("AnimationNodeStateMachineTransition_oprun")]
-graph_offset = Vector2(-5, 25)
+graph_offset = Vector2(-39, -5)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qfm1y"]
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_a8ls1")
@@ -381,20 +382,20 @@ nodes/output/position = Vector2(300, 140)
 node_connections = [&"output", 0, &"StateMachine"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
-radius = 5.0
+radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 radius = 8.0
 height = 22.0
 
-[node name="Player-Jazz" type="CharacterBody2D"]
+[node name="Player-Jazz" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 4
 collision_mask = 15
 motion_mode = 1
 script = ExtResource("1_6ocmt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -17)
+position = Vector2(0, -12)
 texture = ExtResource("2_6ocmt")
 hframes = 43
 
@@ -411,7 +412,6 @@ parameters/StateMachine/MoveState/IdleState/blend_position = Vector2(-0.112903, 
 parameters/StateMachine/MoveState/WalkState/blend_position = Vector2(-0.00358421, 0.414474)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -423,7 +423,6 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="HitboxPivot" type="Node2D" parent="."]
-position = Vector2(0, -5)
 rotation = 1.5708
 
 [node name="Hitbox" parent="HitboxPivot" instance=ExtResource("3_oyl5s")]
@@ -431,8 +430,11 @@ position = Vector2(0, 5)
 collision_layer = 32
 
 [node name="CollisionShape2D" parent="HitboxPivot/Hitbox" index="0"]
-position = Vector2(0, -16)
+position = Vector2(-3.98199e-05, -16)
 shape = SubResource("CapsuleShape2D_dqkch")
 disabled = true
+
+[node name="Sword" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_2y6s8")]
+player = NodePath("..")
 
 [editable path="HitboxPivot/Hitbox"]

@@ -4,6 +4,7 @@ const SPEED: int = 140
 var input_dir: Vector2 = Vector2.ZERO
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
+@onready var sword: Node2D = $Sword
 
 
 func _physics_process(delta):
@@ -18,9 +19,8 @@ func move_state(_delta) -> void:
 		velocity = input_dir * SPEED
 		animation_tree.set("parameters/StateMachine/MoveState/WalkState/blend_position", input_dir)
 		animation_tree.set("parameters/StateMachine/MoveState/IdleState/blend_position", input_dir)
-		#animation_tree.set("parameters/StateMachine/AttackState/blend_position", input_dir)
 	else: 
 		velocity = Vector2.ZERO
-	#if Input.is_action_just_pressed("attack"):
-	#	playback.travel("AttackState")
 	move_and_slide()
+	if Input.is_action_just_pressed("attack"):
+		sword.attack()

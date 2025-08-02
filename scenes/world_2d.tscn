@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://k0oj378ejinx"]
+[gd_scene load_steps=14 format=4 uid="uid://k0oj378ejinx"]
 
 [ext_resource type="PackedScene" uid="uid://bd7s1mrn3rxai" path="res://scenes/player-jazz.tscn" id="2_3ttry"]
 [ext_resource type="Texture2D" uid="uid://6grriebqfvtu" path="res://assets/tilesets/plains.png" id="2_6cuhj"]
 [ext_resource type="Texture2D" uid="uid://rvbya6bogudo" path="res://assets/tilesets/grass.png" id="3_vydw8"]
 [ext_resource type="Texture2D" uid="uid://d4g0mksnqawhm" path="res://assets/objects/objects.png" id="4_3ttry"]
 [ext_resource type="PackedScene" uid="uid://u45yxfcdhqef" path="res://scenes/crate.tscn" id="5_vydw8"]
+[ext_resource type="PackedScene" uid="uid://cf3xms22hg6ao" path="res://scenes/enemy_slime.tscn" id="6_3ttry"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ju7hw"]
 texture = ExtResource("2_6cuhj")
@@ -267,6 +268,11 @@ size = Vector2(93.25, 418.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vydw8"]
 size = Vector2(839, 100)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3ttry"]
+vertices = PackedVector2Array(645.938, -7.17969, 644.047, 352.047, -35.1875, 355.938, -42.7891, -19.7969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-53, -30, -45, 366, 654, 362, 656, -17)])
+
 [node name="World2D" type="Node2D"]
 y_sort_enabled = true
 
@@ -317,3 +323,9 @@ shape = SubResource("RectangleShape2D_vydw8")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
 position = Vector2(301, 384)
 shape = SubResource("RectangleShape2D_vydw8")
+
+[node name="EnemySlime" parent="." instance=ExtResource("6_3ttry")]
+position = Vector2(441, 175)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_3ttry")

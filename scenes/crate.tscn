@@ -24,11 +24,15 @@ frame = 5
 shape = SubResource("CircleShape2D_dwt0d")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_kn6iu")]
-collision_mask = 32
+collision_mask = 64
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_74u5o")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 12.0
+carve_navigation_mesh = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
