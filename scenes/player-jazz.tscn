@@ -434,7 +434,6 @@ position = Vector2(-3.98199e-05, -16)
 shape = SubResource("CapsuleShape2D_dqkch")
 disabled = true
 
-[node name="Sword" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_2y6s8")]
-player = NodePath("..")
+[node name="Sword" parent="." instance=ExtResource("4_2y6s8")]
 
 [editable path="HitboxPivot/Hitbox"]
