@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://k0oj378ejinx"]
+[gd_scene load_steps=15 format=4 uid="uid://k0oj378ejinx"]
 
 [ext_resource type="PackedScene" uid="uid://bd7s1mrn3rxai" path="res://scenes/player-jazz.tscn" id="2_3ttry"]
 [ext_resource type="Texture2D" uid="uid://6grriebqfvtu" path="res://assets/tilesets/plains.png" id="2_6cuhj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d4g0mksnqawhm" path="res://assets/objects/objects.png" id="4_3ttry"]
 [ext_resource type="PackedScene" uid="uid://u45yxfcdhqef" path="res://scenes/crate.tscn" id="5_vydw8"]
 [ext_resource type="PackedScene" uid="uid://cf3xms22hg6ao" path="res://scenes/enemy_slime.tscn" id="6_3ttry"]
+[ext_resource type="PackedScene" uid="uid://b08jlpmnpkcm" path="res://scenes/equipable_sword.tscn" id="7_ju7hw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ju7hw"]
 texture = ExtResource("2_6cuhj")
@@ -329,3 +330,6 @@ position = Vector2(441, 175)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_3ttry")
+
+[node name="EquipableSword" parent="." instance=ExtResource("7_ju7hw")]
+position = Vector2(75, 132)

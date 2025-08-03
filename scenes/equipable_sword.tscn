@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b08jlpmnpkcm"]
+
+[ext_resource type="Script" uid="uid://b7uoriw87xyo7" path="res://scripts/equipable_sword.gd" id="1_b02pt"]
+[ext_resource type="Texture2D" uid="uid://dnkped1r0a6kf" path="res://assets/objects/sword_w_shadow.png" id="1_u66su"]
+[ext_resource type="PackedScene" uid="uid://6qt2w8pjpawx" path="res://interaction/InteractionArea.tscn" id="3_le22y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfiyy"]
+radius = 33.0151
+
+[node name="EquipableSword" type="Node2D"]
+script = ExtResource("1_b02pt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+rotation = 0.523599
+texture = ExtResource("1_u66su")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_le22y")]
+action_name = "pick up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_cfiyy")

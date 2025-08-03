@@ -2,7 +2,6 @@ extends StaticBody2D
 
 const CRATE_EFFECT = preload("res://scenes/crate_effect.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func create_grass_effect() -> void:
 	var crate_effect = CRATE_EFFECT.instantiate()
 	get_tree().root.add_child(crate_effect)

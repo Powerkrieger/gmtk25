@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://cf3xms22hg6ao"]
+[gd_scene load_steps=44 format=3 uid="uid://cf3xms22hg6ao"]
 
 [ext_resource type="Texture2D" uid="uid://buvpivo2r0iiy" path="res://assets/characters/slime.png" id="1_6xinc"]
 [ext_resource type="Script" uid="uid://dtvoupq2b1dut" path="res://scripts/enemy_slime.gd" id="1_khk2i"]
 [ext_resource type="PackedScene" uid="uid://d4gdtyuembdmc" path="res://scenes/hurtbox.tscn" id="3_1trss"]
+[ext_resource type="PackedScene" uid="uid://f2yccx6o7miu" path="res://scenes/health_bar.tscn" id="4_y5ckx"]
 
 [sub_resource type="Animation" id="Animation_khk2i"]
 length = 0.001
@@ -534,7 +535,7 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecc73"]
 radius = 7.0
 
-[node name="EnemySlime" type="CharacterBody2D"]
+[node name="EnemySlime" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 8
 collision_mask = 7
 motion_mode = 1
@@ -582,6 +583,12 @@ shape = SubResource("CircleShape2D_y5ckx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_ecc73")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_y5ckx")]
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 12.0
+offset_bottom = -12.0
 
 [connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
 [connection signal="body_exited" from="ChaseArea" to="." method="_on_chase_area_body_exited"]
