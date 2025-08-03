@@ -17,9 +17,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if chase:
-		nav.target_position = player.global_position
+		# nav.target_position = player.global_position
 		var current_agent_position: Vector2 = global_position
-		var next_path_position: Vector2 = nav.get_next_path_position()
+		# var next_path_position: Vector2 = nav.get_next_path_position()
+		var next_path_position: Vector2 = player.global_position
 		direction = current_agent_position.direction_to(next_path_position)
 		animation_tree.set("parameters/StateMachine/MoveState/WalkState/blend_position", direction)
 		animation_tree.set("parameters/StateMachine/MoveState/IdleState/blend_position", direction)
